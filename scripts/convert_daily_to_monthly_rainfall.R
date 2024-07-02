@@ -16,7 +16,7 @@ fransistown_airport_obs$daily_date <- as.Date(as.character(fransistown_airport_o
 str(fransistown_airport_obs$daily_date)
 
 
-# Aggregate daily data to monthly data
+# Aggregate daily data rainfall to monthly data
 monthly_data <- fransistown_airport_obs %>%
   mutate(year_month = floor_date(daily_date, "month")) %>%
   group_by(year_month) %>%
@@ -25,4 +25,14 @@ monthly_data <- fransistown_airport_obs %>%
 
 # View the first few rows of the monthly dataset
 head(monthly_data)
+
+# Calculate the number of missing values per month
+days_with_missing_data <- fransistown_airport_obs %>%
+  mutate(year_month = floor_date(daily_date, "month")) %>%
+  group_by(year_month) %>%
+  summarise(days_with_na = sum(is.na(Rainfall)))
+
+
+
+
 
