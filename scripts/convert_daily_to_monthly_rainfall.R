@@ -7,6 +7,11 @@ library(lubridate)
 library(ggplot2)
 #library(zoo)
 
+# Notes
+# Chirps 1981 to 2024-05-31
+# obs 1960-01-01 to 2023-12-31.   1960-01-01 to 1990-12-31 nodata
+# Data processing range 1991 to 2023
+
 rain_obs <- read_csv("data/csv/Obs_rainfall_data/033-FRAN-FRANCISTOWN AIRPORT.csv")%>%
   rename(daily_date_obs =1, Rainfall_obs = 2)
 head(rain_obs)
